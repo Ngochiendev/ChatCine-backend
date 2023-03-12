@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('newtest');
+    return view('welcome');
 });
 
 Route::get('/flutter', function () {
