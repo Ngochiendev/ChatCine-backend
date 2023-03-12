@@ -11,7 +11,7 @@
 
 ### Steps to install laravel on Azure webApp service 
 
-1. create the azure webApp (code php 8.0).
+1. create the azure webApp (code php 8.2).
 2. ssh to the webApp :
 - make a copy of the default file in `/etc/nginx/sites-available/`
     `cp /etc/nginx/sites-available/default /home/site/default`
