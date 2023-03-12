@@ -1,4 +1,4 @@
-#!/bin/bash .
+#!/bin/bash ....
 
 # make sure you've copied the default file from the nginx site-enabled and edited the root directory to 
 #/home/site/wwwroot/public 
