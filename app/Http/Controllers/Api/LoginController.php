@@ -51,7 +51,7 @@ class LoginController extends Controller{
             return ['code' => 1, 'data' => $result, 'message' =>'User already exists'];
         }
         } catch (Exception $e) {
-            //throw $th;
+            //throw $th;.
             return ['code' => -1, 'data' => "no  data avalible", 'message' =>(String)$e];
         }
     }
