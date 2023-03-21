@@ -109,8 +109,8 @@ class LoginController extends Controller{
                             "call_type"=>$call_type,
                         ],
                     ]);
-                    $messaging ->send($$message);
-                } elseif($call_type=="voice"){
+                    $messaging ->send($message);
+                } else if($call_type=="voice"){
                     $message = CloudMessage::fromArray([
                         "token" => $device_token,
                         "data"=>[
@@ -123,7 +123,7 @@ class LoginController extends Controller{
                         "android"=>[
                             "priority"=>"high",
                             "notification"=>[
-                                "channel_id"=>"xxxxx",
+                                "channel_id"=>"com.example.chatcine.messages",
                                 "title"=>"Voice call make by".$user_name,
                                 "body"=>"Please click to answer voice call from ".$user_name,
                             ]
@@ -141,6 +141,17 @@ class LoginController extends Controller{
 
         //success
         return ['code'=>0, 'data' => "to_token: ".$to_token, 'message' => 'send notice successfully'];
+    }
 
+    public function bind_fcmtoken(Request $request){
+        $token = $request->user_token;
+        $fcmtoken = $request->input("fcmtoken");
+        if(empty($fcmtoken)){
+            return ['code'=>-1, 'data' => 'no data', 'message' => 'fcmtoken is empty'];
+        }
+        DB::table('users')->where('token', '=',$token)->update([
+            "fcmtoken"=>$fcmtoken,
+        ]); 
+        return ['code'=>0, 'data' => "token: ".$token, 'message' => 'bind fcmtoken successfully'];
     }
 }
